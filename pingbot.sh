@@ -18,7 +18,7 @@ while true; do
       # Success
       if [ $machinedir/failure -nt $machinedir/success ]; then
         # New success
-        echo "$machine: Newly online"
+        echo "$(date) $machine: Newly online"
         curl \
           -X POST \
           -H 'Content-type: application/json' \
@@ -30,7 +30,7 @@ while true; do
       # Failure
       if [ $machinedir/success -nt $machinedir/failure ]; then
         # New failure
-        echo "$machine: Newly offline"
+        echo "$(date) $machine: Newly offline"
         curl \
           -X POST \
           -H 'Content-type: application/json' \
