@@ -3,5 +3,6 @@ services:
   pingbot:
     build: .
     environment:
-      HOSTS: "192.168.1.138"
+      - HOSTS
+      - SLACK_WEBHOOK
 
