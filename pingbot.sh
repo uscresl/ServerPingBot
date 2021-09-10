@@ -19,6 +19,11 @@ while true; do
       if [ $machinedir/failure -nt $machinedir/success ]; then
         # New success
         echo "$machine: Newly online"
+        curl \
+          -X POST \
+          -H 'Content-type: application/json' \
+          --data "{\"text\" : \":sunglasses: $machine is back online\"}" \
+          $SLACK_WEBHOOK
       fi
       touch $machinedir/success
     else
@@ -26,10 +31,15 @@ while true; do
       if [ $machinedir/success -nt $machinedir/failure ]; then
         # New failure
         echo "$machine: Newly offline"
+        curl \
+          -X POST \
+          -H 'Content-type: application/json' \
+          --data "{\"text\" : \":warning: $machine is newly offline\"}" \
+          $SLACK_WEBHOOK
       fi
       touch $machinedir/failure
     fi
   done
 
-  sleep 5s
+  sleep 5m
 done
