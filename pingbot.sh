@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 set -u
 
-mkdir -p pingbot
 echo "Welcome to pingbot v0.0.0"
 echo "Monitoring hosts: $HOSTS"
 
